@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: aws-ecr-nginx
+  namespace: aws-ecr-demo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: aws-ecr-nginx
+  template:
+    metadata:
+      labels:
+        app: aws-ecr-nginx
+    spec:
+      imagePullSecrets:
+        - name: ecr-pull-secret
+      containers:
+        - name: nginx
+          image: 060622564756.dkr.ecr.us-east-1.amazonaws.com/aws-ecr-k3s-demo:v1
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 80
+          resources:
+            requests:
+              cpu: 50m
+              memory: 64Mi
+            limits:
+              cpu: 250m
+              memory: 128Mi

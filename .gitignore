@@ -1,0 +1,22 @@
+# AWS credentials and authentication
+.aws/
+credentials
+*.pem
+*.key
+*.csv
+
+# Kubernetes secrets
+*secret*.yaml
+*secret*.yml
+kubeconfig
+.kube/
+
+# Environment variables
+.env
+.env.*
+
+# Temporary files
+*.tmp
+*.log
+*.swp
+*~
